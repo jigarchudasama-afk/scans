@@ -32,3 +32,25 @@ sudo podman run \
   -v /lib/modules:/lib/modules:ro \
   scans:1.0
 (these mounts seem to give the results we want)
+
+sudo podman run \
+  --rm \
+  -it \
+  --privileged \
+  --network=host \
+  --pid=host \
+  --ipc=host \
+  --uts=host \
+  --security-opt label=type:spc_t \
+  -v /:/host:rprivate \
+  -v /opt/scc:/host/opt/scc:Z \
+  -v /sys:/sys:ro \
+  -v /proc:/proc \
+  -v /var/lib/rpm:/var/lib/rpm:ro \
+  -v /boot:/boot:ro \
+  -v /lib/modules:/lib/modules:ro \
+  -e SENDER_EMAIL="jigar.chudasama@motorolasolutions.com" \
+  -e SMTP_USER="jigar.chudasama@motorolasolutions.com" \
+  -e SMTP_PASS='rhtl ofur bdba uqcx' \
+  -e RECIPIENT_EMAIL="jigar.chudasama@motorolasolutions.com,srinidhi.jagannathan@motorolasolutions.com" \
+  scans:5.1

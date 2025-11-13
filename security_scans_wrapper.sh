@@ -5,7 +5,9 @@ HOST_ROOT="/host"
 SCC_DIR="${HOST_ROOT}/opt/scc"
 LOG_FILE="${SCC_DIR}/security_scans.log"
 # Array of scripts to execute in order
-SCRIPTS_TO_RUN=(
+# "/app/run_openScap.sh"
+# "/app/run_STIG.sh"
+SCRIPTS_TO_RUN=(    
     "/app/run_openScap.sh"
     "/app/run_STIG.sh"
 )
@@ -79,13 +81,13 @@ for i in "${!SCRIPTS_TO_RUN[@]}"; do
 done
 
 # --- Trigger Email Notification ---
-# if [ "$SUCCESS_COUNT" -eq "$TOTAL_COUNT" ]; then
-#     print2log "All scans successful. Triggering email notification script..."
-#     /app/email.sh
-# else
-#     print2log "One or more scans failed. Skipping email notification."
-# fi
-# print2log ""
+if [ "$SUCCESS_COUNT" -eq "$TOTAL_COUNT" ]; then
+    print2log "All scans successful. Triggering email notification script..."
+    /app/email.sh
+else
+    print2log "One or more scans failed. Skipping email notification."
+fi
+print2log ""
 
 # --- Final Summary ---
 print2log "===== All Scans Finished ====="
