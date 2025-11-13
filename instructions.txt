@@ -19,4 +19,4 @@ sudo podman run \
   -e SMTP_USER="jigar.chudasama@motorolasolutions.com" \
   -e SMTP_PASS='16 digit APP password goes here' \
   -e RECIPIENT_EMAIL="jigar.chudasama@motorolasolutions.com" \
-  scans:5.1
+  scans:5.2
