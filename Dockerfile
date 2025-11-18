@@ -1,4 +1,3 @@
-
 FROM registry.access.redhat.com/ubi8/ubi:latest
 
 LABEL maintainer="jigar.chudasama@motorolasolutions.com"
